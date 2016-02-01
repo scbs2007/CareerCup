@@ -14,7 +14,7 @@ public class RemoveAllZerosArrayRightEnd {
 		for(i =0;i<n;++i)
 			arr[i] = sc.nextInt();
 		i = arr.length - 1;
-		while(arr[i]==0&& i>=0)
+		while(arr[i]==0&& i>0)
 		{--i;}	
 //		System.out.println(arr.toString());
 		int temp;
@@ -26,7 +26,7 @@ public class RemoveAllZerosArrayRightEnd {
 				arr[j] = arr[i];
 				arr[i]=temp;
 				--i;
-				while(arr[i]==0 && i>j){--i;}
+				while(i>=0 && arr[i]==0 && i>j){--i;}
 				if(i<=j)
 					break;
 			

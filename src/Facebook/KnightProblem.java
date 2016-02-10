@@ -5,7 +5,8 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class KnightProblem {
+public class KnightProblem 
+{
 
 	public static void display(int arr[][])
 	{
@@ -59,7 +60,7 @@ public class KnightProblem {
 			{
 				sc.poll();
 				if(flag==1)
-				sc.offer("#");
+					sc.offer("#");
 				count++;
 			}
 		}
@@ -67,7 +68,7 @@ public class KnightProblem {
 	}
 	public static String findmin(int arr[][], int x, int y)
 	{
-		int n=arr.length;
+		int n = arr.length;
 		int min = Integer.MAX_VALUE;
 		int minx=0, miny=0;
 		if((x+1<n && y-2 <n) && (x+1>=0 && y-2 >=0))
@@ -144,13 +145,15 @@ public class KnightProblem {
 				miny = y+1;
 			}
 		}
-			
+		if(min == Integer.MAX_VALUE)
+			return "-1";
 		return minx+" "+miny; 
 	}
 	public static void findShortest(int arr[][], String source, String destination)
 	{
 		Queue<String> path = new LinkedList<String>();
 		String str;
+		int flag = 0;
 		path.offer(source);
 		while(source.equals(destination)==false)
 		{
@@ -159,11 +162,18 @@ public class KnightProblem {
 			int y = Integer.parseInt(a[1]);
 			int n = arr.length;
 			str = findmin(arr, x, y);
+			if(str.equals("-1"))
+			{
+				flag = 1;
+				break;
+			}
 			path.offer(str);
 			source = str;
 		}
-		
-		System.out.println(path);
+		if(flag == 1)
+			System.out.println("Cannot reach destination!");
+		else
+			System.out.println(path);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -176,10 +186,15 @@ public class KnightProblem {
 		String source = sc.nextLine();
 		String destination = sc.nextLine();
 		
+		for(int i=0;i<2;++i)
+		{
+			int obs1x = sc.nextInt();
+			int obs1y = sc.nextInt();
+			arr[obs1x][obs1y] = Integer.MAX_VALUE;
+		}
 		populate(arr, destination);
 		findShortest(arr, source, destination);
-		
-		
+		sc.close();
 	}
 
 }

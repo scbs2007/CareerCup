@@ -37,6 +37,7 @@ public class PhoneNumberPossibleLetterCombinations {
 			temp = new ArrayList<String>();
 			if(fetched ==null)
 				continue;
+			
 			for(int j=0;j<fetched.length(); ++j)
 			{
 				for(String t: result)
@@ -53,5 +54,4 @@ public class PhoneNumberPossibleLetterCombinations {
 		}
 		System.out.println(result + "\n" +result.size());
 	}
-
 }

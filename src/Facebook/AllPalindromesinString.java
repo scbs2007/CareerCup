@@ -13,6 +13,8 @@ public class AllPalindromesinString {
 		{
 			j=i-1;
 			k=i+count;
+			if(j>=0)
+				sc.add(s.charAt(j)+"");
 			while(j>=0 && k<n)
 			{
 				if(s.charAt(j) == s.charAt(k))
@@ -23,7 +25,8 @@ public class AllPalindromesinString {
 				else
 					break;
 			}
-			sc.add(s.substring(j+1, k));
+			if(!s.substring(j+1, k).equals(""))
+				sc.add(s.substring(j+1, k));
 		}
 	}
 	public static void main(String[] args) {
